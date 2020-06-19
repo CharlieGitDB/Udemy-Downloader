@@ -26,7 +26,7 @@ function addDownloadButtonToPage(videoLink) {
 }
 
 function waitForControlBarThenAppendDownloadButton(controlBar, downloadButton, liveDownloadButton) {
-  let waitForControlBar = setInterval(() => {
+  const waitForControlBar = setInterval(() => {
     if (document.body.contains(controlBar) && !document.body.contains(liveDownloadButton)) {
       clearInterval(waitForControlBar)
       appendDownloadButton(downloadButton)
