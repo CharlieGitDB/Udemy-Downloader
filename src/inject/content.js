@@ -18,8 +18,7 @@ function addDownloadButtonToPage(videoLink) {
 
   if (!document.body.contains(controlBar)) {
     waitForControlBarThenAppendDownloadButton(controlBar, downloadButton, liveDownloadButton)
-  }
-  else {
+  } else {
     if (!document.body.contains(liveDownloadButton)) {
       appendDownloadButton(downloadButton)
     }
