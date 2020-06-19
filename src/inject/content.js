@@ -1,10 +1,10 @@
-let count = 0
+let messageReceivedCount = 0
 const CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX = 3
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  count++
+  messageReceivedCount++
 
-  if (count >= CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX) {
+  if (messageReceivedCount >= CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX) {
     addDownloadButtonToPage(request.url)
   }
 
