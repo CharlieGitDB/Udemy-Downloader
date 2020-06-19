@@ -1,0 +1,33 @@
+{
+  "name": "UdemyDownloader",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This allows you to download Udemy course videos.",
+  "homepage_url": "https://www.github.com/charliegitdb",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "webRequest",
+    "*://www.udemy.com/*",
+    "*://udemy.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "src/background/background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.udemy.com/*",
+        "*://udemy.com/*"
+      ],
+      "js": ["src/inject/content.js"],
+      "css": ["src/inject/content.css"]
+    }
+  ]
+}
