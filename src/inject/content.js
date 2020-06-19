@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
   sendResponse('received')
-});
+})
 
 function createDownloadButton(videoLink) {
   const downloadButton = getDownloadButton(videoLink)
