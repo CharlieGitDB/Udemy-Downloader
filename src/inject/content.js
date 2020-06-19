@@ -26,10 +26,18 @@ function addDownloadButtonToPage(videoLink) {
 }
 
 function waitForControlBarThenAppendDownloadButton(controlBar, downloadButton, liveDownloadButton) {
+  let runCount = 0
+  const RAN_FOR_THREE_MINUTES = 1800
+  
   const waitForControlBar = setInterval(() => {
-    if (document.body.contains(controlBar) && !document.body.contains(liveDownloadButton)) {
+    runCount++
+    if (runCount < RAN_FOR_THREE_MINUTES) {
+      if (document.body.contains(controlBar) && !document.body.contains(liveDownloadButton)) {
+        clearInterval(waitForControlBar)
+        appendDownloadButton(downloadButton)
+      }
+    } else {
       clearInterval(waitForControlBar)
-      appendDownloadButton(downloadButton)
     }
   }, 100)
 }
