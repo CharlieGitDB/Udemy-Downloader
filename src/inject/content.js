@@ -1,5 +1,6 @@
 let messageReceivedCount = 0
 const CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX = 3
+const UDEMY_DOWNLOAD_BUTTON_ID = 'udemy-downloader-btn'
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   messageReceivedCount++
@@ -14,7 +15,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 function addDownloadButtonToPage(videoLink) {
   const downloadButton = getDownloadButton(videoLink)
   const controlBar = document.querySelector('.control-bar--control-bar--MweER')
-  const liveDownloadButton = document.querySelector('#udemy-downloader-btn')
+  const liveDownloadButton = document.querySelector(`#${UDEMY_DOWNLOAD_BUTTON_ID}`)
 
   if (!document.body.contains(controlBar)) {
     waitForControlBarThenAppendDownloadButton(controlBar, downloadButton, liveDownloadButton)
@@ -44,7 +45,7 @@ function waitForControlBarThenAppendDownloadButton(controlBar, downloadButton, l
 
 function getDownloadButton(videoLink) {
   const downloadButton = document.createElement('a')
-  downloadButton.id = 'udemy-downloader-btn'
+  downloadButton.id = UDEMY_DOWNLOAD_BUTTON_ID
   downloadButton.href = videoLink
   downloadButton.setAttribute('class', 'progress-display--progress-display--B20-A')
   downloadButton.setAttribute('title', 'Download Udemy Video')
