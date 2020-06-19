@@ -5,5 +5,3 @@ chrome.webRequest.onCompleted.addListener((details) => {
     })
   }
 }, { urls: ['*://www.udemy.com/*', '*://udemy.com/*'] })
-
-console.log('ran!')

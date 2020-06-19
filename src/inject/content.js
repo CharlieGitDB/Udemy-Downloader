@@ -1,3 +1,16 @@
+const count = 0
+const CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX = 3
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  count++
+
+  if (count >= CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX) {
+    createDownloadButton(request.url)
+  }
+
+  sendResponse('received')
+});
+
 function createDownloadButton(videoLink) {
   const downloadButton = getDownloadButton(videoLink)
   const controlBar = document.querySelector('.control-bar--control-bar--MweER')
@@ -26,7 +39,7 @@ function getDownloadButton(videoLink) {
   const downloadButton = document.createElement('a')
   downloadButton.href = videoLink
   downloadButton.id = 'udemy-downloader-btn'
-  downloadButton.setAttribute('class', 'progress-display--progress-display--B20-A') \
+  downloadButton.setAttribute('class', 'progress-display--progress-display--B20-A')
   downloadButton.innerHTML = 'UD'
   downloadButton.setAttribute('title', 'Download Udemy Video')
 
@@ -38,16 +51,3 @@ function appendDownloadButton(downloadButton) {
   const parentDiv = addNoteButton.parentNode
   parentDiv.insertBefore(downloadButton, addNoteButton.nextSibling)
 }
-
-let count = 0
-const CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX = 3
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  count++
-
-  if (count >= CORRECT_M3U8_VIDEO_URL_REQUEST_INDEX) {
-    createDownloadButton(request.url)
-  }
-
-  sendResponse('received')
-});
